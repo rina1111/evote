@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 17 Bulan Mei 2019 pada 08.04
+-- Waktu pembuatan: 21 Bulan Mei 2019 pada 13.25
 -- Versi server: 10.1.37-MariaDB
 -- Versi PHP: 7.2.12
 
@@ -46,10 +46,60 @@ INSERT INTO `data_rts` (`id`, `rt`, `rw`, `kelurahan`, `kecamatan`, `created_at`
 (1, 'RT 02', 'RW 01', 'Cisurupan', 'Cibiru', '2019-05-11 21:25:27', '2019-05-11 21:25:27'),
 (3, 'RT 03', 'RW 01', 'Cisurupan', 'Cibiru', '2019-05-11 21:36:43', '2019-05-11 21:36:43'),
 (4, 'RT 04', 'RW 01', 'Cisurupan', 'Cibiru', '2019-05-11 21:38:05', '2019-05-11 21:38:05'),
-(12, 'RT 05', 'RW 02', 'Cisurupan', 'Cibiru', '2019-05-12 00:13:17', '2019-05-12 00:13:17'),
-(14, 'RT 06', 'RW 02', 'Cisurupan', 'Cibiru', '2019-05-12 00:15:14', '2019-05-12 00:15:14'),
-(16, 'RT 07', 'RW 02', 'Cisurupan', 'Cibiru', '2019-05-12 00:18:26', '2019-05-12 00:18:26'),
-(17, 'RT 08', 'RW', 'cisurupan', 'cibiru', '2019-05-13 20:05:44', '2019-05-13 20:05:44');
+(5, 'RT 05', 'RW 02', 'Cisurupan', 'Cibiru', '2019-05-12 00:13:17', '2019-05-12 00:13:17'),
+(6, 'RT 06', 'RW 02', 'Cisurupan', 'Cibiru', '2019-05-12 00:15:14', '2019-05-12 00:15:14'),
+(7, 'RT 07', 'RW 02', 'Cisurupan', 'Cibiru', '2019-05-12 00:18:26', '2019-05-12 00:18:26'),
+(8, 'RT 08', 'RW', 'cisurupan', 'cibiru', '2019-05-13 20:05:44', '2019-05-13 20:05:44');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `data_rws`
+--
+
+CREATE TABLE `data_rws` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `datarw` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `kelurahanrw` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `kecamatanrw` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data untuk tabel `data_rws`
+--
+
+INSERT INTO `data_rws` (`id`, `datarw`, `kelurahanrw`, `kecamatanrw`, `created_at`, `updated_at`) VALUES
+(1, 'RW 01', 'Cirupan', 'Cibiru', '2019-05-17 17:43:07', '2019-05-20 07:27:41'),
+(4, 'RW 02', 'Cirupan', 'Cibiru', '2019-05-20 20:43:33', '2019-05-20 20:43:33');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `dpts`
+--
+
+CREATE TABLE `dpts` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `finger_id` int(11) DEFAULT NULL,
+  `nik` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `nama_dpt` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `alamat_dpt` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `jns_kelamin` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `agama_dpt` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `rwid` bigint(20) UNSIGNED NOT NULL,
+  `rtid` bigint(20) UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data untuk tabel `dpts`
+--
+
+INSERT INTO `dpts` (`id`, `finger_id`, `nik`, `nama_dpt`, `alamat_dpt`, `jns_kelamin`, `agama_dpt`, `rwid`, `rtid`, `created_at`, `updated_at`) VALUES
+(1, NULL, '300013030300', 'Maemunah', 'Jln.Cilengkrang 01', 'perempuan', 'Islam', 1, 1, '2019-05-20 21:29:11', '2019-05-20 21:29:11');
 
 -- --------------------------------------------------------
 
@@ -71,8 +121,10 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (1, '2014_10_12_000000_create_users_table', 1),
 (2, '2014_10_12_100000_create_password_resets_table', 1),
 (3, '2019_05_12_035248_create_data_rts_table', 2),
-(8, '2019_05_12_073457_create_paslon_rws_table', 3),
-(9, '2019_05_12_075306_create_paslonrts_table', 4);
+(10, '2019_05_12_075306_create_paslonrts_table', 3),
+(11, '2019_05_17_142231_create_data_rws_table', 3),
+(12, '2019_05_17_143910_create_paslon_rws_table', 4),
+(13, '2019_05_21_035348_create_dpts_table', 5);
 
 -- --------------------------------------------------------
 
@@ -99,7 +151,7 @@ CREATE TABLE `paslonrts` (
 --
 
 INSERT INTO `paslonrts` (`id`, `no_paslon`, `nm_rt`, `rt_id`, `pekerjaan`, `agama`, `umur`, `gambar`, `alamat`, `created_at`, `updated_at`) VALUES
-(1, '01', 'Nurhadi Ahmad Yohan', 1, 'Swasta', 'Islam', '35', 'avatar/TgHWANcm3JJoq0rpxbOnFCtlXpqyTL2fufqUXkbO.jpeg', 'jln. pasir impun no 35', '2019-05-12 01:22:34', '2019-05-12 01:22:34');
+(2, '01', 'Nurhadi Ahmad Yohan', 1, 'Swasta', 'Islam', '35', 'avatar/XYc0Zf0d0FOXSnnjMLGqWwWI4tccOCql1HbLba3o.jpeg', 'jln. pasir impun no 35', '2019-05-20 20:29:10', '2019-05-20 20:29:10');
 
 -- --------------------------------------------------------
 
@@ -111,7 +163,7 @@ CREATE TABLE `paslon_rws` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `no_paslon` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `nm_rw` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `rw` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `rw_id` bigint(20) UNSIGNED NOT NULL,
   `pekerjaan` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `agama` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `umur` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -120,13 +172,6 @@ CREATE TABLE `paslon_rws` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data untuk tabel `paslon_rws`
---
-
-INSERT INTO `paslon_rws` (`id`, `no_paslon`, `nm_rw`, `rw`, `pekerjaan`, `agama`, `umur`, `foto`, `alamat`, `created_at`, `updated_at`) VALUES
-(1, '01', 'Kim Syamsudin', 'RW 01', 'Swasta', 'Islam', '35', 'avatar/3rcJ6Xnge286IMpjxUGCeYUsTw0MkvdxRrGjgmUe.jpeg', 'jln. pasir impun no 36', '2019-05-12 03:21:01', '2019-05-12 03:21:01');
 
 -- --------------------------------------------------------
 
@@ -175,6 +220,20 @@ ALTER TABLE `data_rts`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indeks untuk tabel `data_rws`
+--
+ALTER TABLE `data_rws`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `dpts`
+--
+ALTER TABLE `dpts`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `dpts_rwid_foreign` (`rwid`),
+  ADD KEY `dpts_rtid_foreign` (`rtid`);
+
+--
 -- Indeks untuk tabel `migrations`
 --
 ALTER TABLE `migrations`
@@ -191,7 +250,8 @@ ALTER TABLE `paslonrts`
 -- Indeks untuk tabel `paslon_rws`
 --
 ALTER TABLE `paslon_rws`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `paslon_rws_rw_id_foreign` (`rw_id`);
 
 --
 -- Indeks untuk tabel `password_resets`
@@ -214,25 +274,37 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT untuk tabel `data_rts`
 --
 ALTER TABLE `data_rts`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT untuk tabel `data_rws`
+--
+ALTER TABLE `data_rws`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT untuk tabel `dpts`
+--
+ALTER TABLE `dpts`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT untuk tabel `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT untuk tabel `paslonrts`
 --
 ALTER TABLE `paslonrts`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT untuk tabel `paslon_rws`
 --
 ALTER TABLE `paslon_rws`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT untuk tabel `users`
@@ -245,10 +317,23 @@ ALTER TABLE `users`
 --
 
 --
+-- Ketidakleluasaan untuk tabel `dpts`
+--
+ALTER TABLE `dpts`
+  ADD CONSTRAINT `dpts_rtid_foreign` FOREIGN KEY (`rtid`) REFERENCES `data_rts` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `dpts_rwid_foreign` FOREIGN KEY (`rwid`) REFERENCES `data_rws` (`id`) ON DELETE CASCADE;
+
+--
 -- Ketidakleluasaan untuk tabel `paslonrts`
 --
 ALTER TABLE `paslonrts`
   ADD CONSTRAINT `paslonrts_rt_id_foreign` FOREIGN KEY (`rt_id`) REFERENCES `data_rts` (`id`) ON DELETE CASCADE;
+
+--
+-- Ketidakleluasaan untuk tabel `paslon_rws`
+--
+ALTER TABLE `paslon_rws`
+  ADD CONSTRAINT `paslon_rws_rw_id_foreign` FOREIGN KEY (`rw_id`) REFERENCES `data_rws` (`id`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
