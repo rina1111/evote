@@ -8,7 +8,7 @@
   <a  style="color:black;font-size:18px; background-color:lightgrey;"  class="nav-link" href="{{url('admin/kandidat')}}"><i class="fas fa-user-friends"></i> <span>Kandidat</span></a></a>
 </li>
 <li class="nav-item">
-  <a style="color:black;font-size:18px; background-color:white;"  class="nav-link" href="#"><i class="fas fa-file"></i> <span>Daftar Pemilih</span></a>
+  <a style="color:black;font-size:18px; background-color:white;"  class="nav-link" href="{{url('admin/dpt')}}"><i class="fas fa-file"></i> <span>Daftar Pemilih</span></a>
 </li>
 <li class="nav-item">
   <a  style="color:black;font-size:18px; background-color:white;"  class="nav-link " href="#" tabindex="-1" aria-disabled="true"><i class="fa fa-line-chart"></i> <span>Hasil Perhitungan</span></a>
@@ -31,13 +31,16 @@
   <div class="row">
     <div class="col-md-6">
       <h2>Kandidat RT</h2>
+      <button class="btn btn-link collapsed"  style="font-size:16px; background:black; color:white;" type="button" data-toggle="collapse" data-target="#collapseone" aria-expanded="false" aria-controls="collapseThree">
+      Tambah Kandidat RT
+      </button>
       <table class="table" style="border-radius: solid;">
         <thead>
           <tr>
             <th>No</th>
             <th>Nomor Kandidat</th>
             <th>Nama Kandidat</th>
-            <th>RT</th>
+            <th>RT ID</th>
             <th>Umur</th>
             <th>Pekerjaan</th>
             <th>Agama</th>
@@ -50,7 +53,7 @@
             <td>{{$index+1}}</td>
             <td>{{$paslonrt->no_paslon}}</td>
             <td>{{$paslonrt->nm_rt}}</td>
-            <td>{{$paslonrt->rt}}</td>
+            <td>{{$paslonrt->rt_id}}</td>
             <td>{{$paslonrt->umur}}</td>
             <td>{{$paslonrt->pekerjaan}}</td>
             <td>{{$paslonrt->agama}}</td>
@@ -60,6 +63,8 @@
             N/A
             @endif
           </td>
+          <td><a href="" class="btn btn-info">edit</a>
+            <a style="background:darkred;" href="/delete/{{$paslonrt->id}}/paslonrt" class="btn btn-danger">delete</a></td>
           </tr>
           @endforeach
         </tbody>
@@ -68,13 +73,16 @@
 
     <div class="col-md-6">
       <h2>Kandidat RW</h2>
+      <button class="btn btn-link collapsed"  style="font-size:16px; background:black; color:white;" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+      Tambah Kandidat RW
+      </button>
       <table class="table" style="border-radius: solid;">
         <thead>
           <tr>
             <th>No</th>
             <th>Nomor Kandidat</th>
             <th>Nama Kandidat</th>
-            <th>RW</th>
+            <th>RW ID</th>
             <th>Umur</th>
             <th>Pekerjaan</th>
             <th>Agama</th>
@@ -87,7 +95,7 @@
             <td>{{$index+1}}</td>
             <td>{{$paslonrw->no_paslon}}</td>
             <td>{{$paslonrw->nm_rw}}</td>
-            <td>{{$paslonrw->rw}}</td>
+            <td>{{$paslonrw->rw_id}}</td>
             <td>{{$paslonrw->umur}}</td>
             <td>{{$paslonrw->pekerjaan}}</td>
             <td>{{$paslonrw->agama}}</td>
@@ -97,6 +105,9 @@
             N/A
             @endif
           </td>
+          <td><a href="" class="btn btn-info">edit</a>
+            <a style="background:darkred;" href="/delete/{{$paslonrw->id}}/paslonrw" class="btn btn-danger">delete</a>
+              </td>
           </tr>
           @endforeach
         </tbody>
@@ -111,9 +122,7 @@
   <div class="card">
     <div class="card-header" id="headingThree">
       <h2 class="mb-0">
-        <button class="btn btn-link collapsed"  style="font-size:16px; background:black; color:white;" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-        Tambah Kandidat RW
-        </button>
+
       </h2>
     </div>
     <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
@@ -133,7 +142,12 @@
   </div>
   <div class="form-group col-md-6">
       <label for="inputPassword4">RW</label>
-    <input type="text" name="rw" class="form-control" id="inputPassword4" >
+      <select class="form-control" name="rw_id">
+        <option value="">Pilih....</option>
+        @foreach($datarw as $datarw)
+        <option value="{{$datarw->id}}">{{$datarw->datarw}}</option>
+        @endforeach
+      </select>
 
   </div>
 
@@ -184,9 +198,7 @@
   <div class="card">
     <div class="card-header" id="headingone">
       <h2 class="mb-0">
-        <button class="btn btn-link collapsed"  style="font-size:16px; background:black; color:white;" type="button" data-toggle="collapse" data-target="#collapseone" aria-expanded="false" aria-controls="collapseThree">
-        Tambah Kandidat RT
-        </button>
+
       </h2>
     </div>
     <div id="collapseone" class="collapse" aria-labelledby="headingone" data-parent="#accordionExample">
