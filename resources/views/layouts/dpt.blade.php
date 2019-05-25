@@ -15,9 +15,14 @@
 		<link href="{{asset('plugins/fullcalendar/fullcalendar.css')}}" rel="stylesheet">
 		<link href="{{asset('plugins/xcharts/xcharts.min.css')}}" rel="stylesheet">
 		<link href="{{asset('plugins/select2/select2.css')}}" rel="stylesheet">
-
 		<link href="{{asset('plugins/justified-gallery/justifiedGallery.css')}}" rel="stylesheet">
 		<link href="{{asset('css/style_v2.css')}}" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/pathto/css/sweetalert.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 		<link href="{{asset('plugins/chartist/chartist.min.css')}}" rel="stylesheet">
 		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 		<!--[if lt IE 9]>
@@ -25,6 +30,8 @@
 				<script src="http://getbootstrap.com/docs-assets/js/respond.min.js"></script>
 		<![endif]-->
 	</head>
+  <script src="/pathto/js/sweetalert.js"></script>
+@include('sweet::alert')
 <body>
 <!--Start Header-->
 <div id="screensaver">
@@ -57,22 +64,10 @@
 			</div>
 			<div id="top-panel" class="col-lg-12 col-lg-10">
 				<div class="row">
+
+
             <ul class="nav nav-tabs justify-content-center">
-            <li class="nav-item">
-              <a  style="color:black;font-size:18px; background-color:lightgrey;" class='"btn btn-secondary' href="{{url('admin/index ')}}"> <i class="fas fa-home"></i> <span>Dashboard</span></a>
-            </li>
-            <li class="nav-item">
-              <a  style="color:black;font-size:18px; background-color:white;"  class="nav-link" href="{{url('admin/kandidat ')}}"><i class="fas fa-user-friends"></i> <span>Kandidat</span></a></a>
-            </li>
-            <li class="nav-item">
-              <a style="color:black;font-size:18px; background-color:white;"  class="nav-link" href="{{url('admin/dpt ')}}"><i class="fas fa-file"></i> <span>Daftar Pemilih</span></a>
-            </li>
-            <li class="nav-item">
-              <a  style="color:black;font-size:18px; background-color:white;"  class="nav-link " href="#" tabindex="-1" aria-disabled="true"><i class="fa fa-line-chart"></i> <span>Hasil Perhitungan</span></a>
-            </li>
-            <li class="nav-item">
-              <a  style="color:black;font-size:18px; background-color:white;"  class="nav-link " href="{{url('admin/datart')}}" tabindex="-1" aria-disabled="true"><i class="fa fa-line-chart"></i> <span>Data RT dan RW</span></a>
-            </li>
+            @yield('nav')
           </ul>
 
 
@@ -130,100 +125,30 @@
             setInterval(showTime, 500);
             //-->
             </script></li>
-            <li style="border-style:solid" > <a style="font-size: 20px; text-align:center;" href="">Hi {{ Auth::user()->name }}</a>   </li>
+            <li style="border-style:solid" > <a style="font-size: 22px; text-align:center;" href="">{{ Session::get('nama_dpt') }}</a>   </li>
             <li  style="border-style:solid">
-              <a class="btn btn-outline-info btn-sm"style="font-size: 20px; text-align:center;"  href="{{route('logout')}}"
+              <a class="btn btn-outline-info btn-sm"style="font-size: 24px; text-align:center;"  href=""
                       onclick="event.preventDefault();
                                     document.getElementById('logout-form').submit();">
                        {{ __('Logout') }}
-
                    </a>
-                   <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                       @csrf
-                   </form>
+									 <form id="logout-form" action="{{ url('dpt/logout') }}" method="get">
+					 @csrf
+			 </form>
 
 </li>
 		</div>
 		<!--Start Content-->
-		<div id="content" >
+		<div id="content">
       @include('sweetalert::alert')
-        <div class="jumbotron jumbotron-fluid" style="background-color:white">
-    <div class="container">
-      <h1 style="border-bottom:solid;" class="display-4">Darshboard</h1><br>
-    </div>
-    <div class="row mt-5">
-    <div class="col-xl-3 col-sm-6 mb-3">
-    <div style="background:#525252; width: 450px;" href="" class="btn btn-danger">
-    <div class="card-body">
-    <div class="card-body-icon">
-    <i class="fas fa-user-friends"></i>
-    </div>
-    <div class="mr-5">Kandidat</div>
-    </div>
-    <a class="card-footer text-white clearfix small z-1" href="{{url('admin/kandidat ')}}">
-    <span class="float-left">View Details</span>
-    <span class="float-right">
-    <i class="fa fa-angle-right"></i>
-    </span>
-    </a>
-    </div>
-    </div>
-    <div class="col-xl-3 col-sm-6 mb-3">
-    <div style="background:#525252; width: 450px;" href="" class="btn btn-danger">
-    <div class="card-body">
-    <div class="card-body-icon">
-    <i class="fas fa-file"></i>
-    </div>
-    <div class="mr-5">Daftar Pemilih</div>
-    </div>
-    <a class="card-footer text-white clearfix small z-1" href="{{url('admin/dpt')}}">
-    <span class="float-left">View Details</span>
-    <span class="float-right">
-    <i class="fa fa-angle-right"></i>
-    </span>
-    </a>
-    </div>
-    </div>
-        <div class="col-xl-3 col-sm-6 mb-3">
-    <div style="background:#525252; width: 450px;" href="" class="btn btn-danger">
-    <div class="card-body">
-    <div class="card-body-icon">
-    <i class="fa fa-line-chart"></i>
-    </div>
-    <div class="mr-5">Hasil Perhitungan</div>
-    </div>
-    <a class="card-footer text-white clearfix small z-1" href="#">
-    <span class="float-left">View Details</span>
-    <span class="float-right">
-    <i class="fa fa-angle-right"></i>
-    </span>
-    </a>
-    </div>
-    </div>
-        <div class="col-xl-3 col-sm-6 mb-3">
-    <div style="background:#525252; width: 450px;" href="" class="btn btn-danger">
-    <div class="card-body">
-    <div class="card-body-icon">
-    <i class="fa fa-line-chart"></i>
-    </div>
-    <div class="mr-5">Data RT dan RW</div>
-    </div>
-    <a class="card-footer text-white clearfix small z-1" href="{{url('admin/datart')}}">
-    <span class="float-left">View Details</span>
-    <span class="float-right">
-    <i class="fa fa-angle-right"></i>
-    </span>
-    </a>
-    </div>
-    </div>
-    </div>
-
+      @yield('content')
 </div>
 
 
 		</div>
 		<!--End Content-->
-
+	</div>
+</div>
 <!--End Container-->
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <!--<script src="http://code.jquery.com/jquery.js"></script>-->

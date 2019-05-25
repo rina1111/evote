@@ -5,16 +5,16 @@
   <a  style="color:black;font-size:18px; background-color:white;" class='"btn btn-secondary' href="{{url('admin/index ')}}"> <i class="fas fa-home"></i> <span>Dashboard</span></a>
 </li>
 <li class="nav-item">
-  <a  style="color:black;font-size:18px; background-color:white;"  class="nav-link" href="#"><i class="fas fa-user-friends"></i> <span>Kandidat</span></a></a>
+  <a  style="color:black;font-size:18px; background-color:white;"  class="nav-link" href="V{{url('admin/kandidat ')}}"><i class="fas fa-user-friends"></i> <span>Kandidat</span></a></a>
 </li>
 <li class="nav-item">
-  <a style="color:black;font-size:18px; background-color:white;"  class="nav-link" href="#"><i class="fas fa-file"></i> <span>Daftar Pemilih</span></a>
+  <a style="color:black;font-size:18px; background-color:white;"  class="nav-link" href="{{url('admin/dpt ')}}"><i class="fas fa-file"></i> <span>Daftar Pemilih</span></a>
 </li>
 <li class="nav-item">
   <a  style="color:black;font-size:18px; background-color:white;"  class="nav-link " href="#" tabindex="-1" aria-disabled="true"><i class="fa fa-line-chart"></i> <span>Hasil Perhitungan</span></a>
 </li>
 <li class="nav-item">
-  <a  style="color:black;font-size:18px; background-color:lightgrey;"  class="nav-link " href="#" tabindex="-1" aria-disabled="true"><i class="fa fa-line-chart"></i> <span>Data RT dan RW</span></a>
+  <a  style="color:black;font-size:18px; background-color:lightgrey;"  class="nav-link " href="{{url('admin/datart ')}}" tabindex="-1" aria-disabled="true"><i class="fa fa-line-chart"></i> <span>Data RT dan RW</span></a>
 </li>
 </ul>
 

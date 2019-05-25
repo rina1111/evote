@@ -12,7 +12,7 @@
 */
 Auth::routes();
 Route::get('/', function () {
-    return view('welcome');
+    return view('dpt.login');
 });
 Route::get('admin/index', 'Admin@adminindex');
 Route::get('admin/datart', 'Admin@index');
@@ -33,5 +33,15 @@ Route::get('/delete/{id}/paslonrt', 'Admin@delete_paslonrt');
 
 Route::get('admin/dpt', 'Admin@dptindex');
 Route::post('/create/datadpt','Admin@storedpt');
+Route::get('/delete/{id}/dpt', 'Admin@delete_dpt');
+Route::get('/admin/{id}/editdpt', 'Admin@editdpt');
+Route::post('/update/{id}/datadpt','Admin@update_dpt');
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/dpt/login ', 'LoginDPT@auth');
+Route::post('/dpt/login', 'LoginDPT@login');
+Route::get('/dpt/logout', 'LoginDPT@logout');
+Route::get('/dpt/index', 'LoginDPT@index');
+Route::get('/dpt/index', 'LoginDPT@data');
+Route::get('/dpt/pemilihan', 'DptController@pemilihan');

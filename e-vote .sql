@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 21 Bulan Mei 2019 pada 13.25
+-- Waktu pembuatan: 25 Bulan Mei 2019 pada 07.40
 -- Versi server: 10.1.37-MariaDB
 -- Versi PHP: 7.2.12
 
@@ -43,13 +43,7 @@ CREATE TABLE `data_rts` (
 --
 
 INSERT INTO `data_rts` (`id`, `rt`, `rw`, `kelurahan`, `kecamatan`, `created_at`, `updated_at`) VALUES
-(1, 'RT 02', 'RW 01', 'Cisurupan', 'Cibiru', '2019-05-11 21:25:27', '2019-05-11 21:25:27'),
-(3, 'RT 03', 'RW 01', 'Cisurupan', 'Cibiru', '2019-05-11 21:36:43', '2019-05-11 21:36:43'),
-(4, 'RT 04', 'RW 01', 'Cisurupan', 'Cibiru', '2019-05-11 21:38:05', '2019-05-11 21:38:05'),
-(5, 'RT 05', 'RW 02', 'Cisurupan', 'Cibiru', '2019-05-12 00:13:17', '2019-05-12 00:13:17'),
-(6, 'RT 06', 'RW 02', 'Cisurupan', 'Cibiru', '2019-05-12 00:15:14', '2019-05-12 00:15:14'),
-(7, 'RT 07', 'RW 02', 'Cisurupan', 'Cibiru', '2019-05-12 00:18:26', '2019-05-12 00:18:26'),
-(8, 'RT 08', 'RW', 'cisurupan', 'cibiru', '2019-05-13 20:05:44', '2019-05-13 20:05:44');
+(4, 'RT 04', 'RW 01', 'Cisurupan', 'Cibiru', '2019-05-11 21:38:05', '2019-05-11 21:38:05');
 
 -- --------------------------------------------------------
 
@@ -71,8 +65,7 @@ CREATE TABLE `data_rws` (
 --
 
 INSERT INTO `data_rws` (`id`, `datarw`, `kelurahanrw`, `kecamatanrw`, `created_at`, `updated_at`) VALUES
-(1, 'RW 01', 'Cirupan', 'Cibiru', '2019-05-17 17:43:07', '2019-05-20 07:27:41'),
-(4, 'RW 02', 'Cirupan', 'Cibiru', '2019-05-20 20:43:33', '2019-05-20 20:43:33');
+(1, 'RW 01', 'Cirupan', 'Cibiru', '2019-05-17 17:43:07', '2019-05-20 07:27:41');
 
 -- --------------------------------------------------------
 
@@ -85,6 +78,8 @@ CREATE TABLE `dpts` (
   `finger_id` int(11) DEFAULT NULL,
   `nik` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `nama_dpt` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `username` varchar(119) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `password` varchar(119) COLLATE utf8mb4_unicode_ci NOT NULL,
   `alamat_dpt` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `jns_kelamin` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `agama_dpt` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -98,8 +93,8 @@ CREATE TABLE `dpts` (
 -- Dumping data untuk tabel `dpts`
 --
 
-INSERT INTO `dpts` (`id`, `finger_id`, `nik`, `nama_dpt`, `alamat_dpt`, `jns_kelamin`, `agama_dpt`, `rwid`, `rtid`, `created_at`, `updated_at`) VALUES
-(1, NULL, '300013030300', 'Maemunah', 'Jln.Cilengkrang 01', 'perempuan', 'Islam', 1, 1, '2019-05-20 21:29:11', '2019-05-20 21:29:11');
+INSERT INTO `dpts` (`id`, `finger_id`, `nik`, `nama_dpt`, `username`, `password`, `alamat_dpt`, `jns_kelamin`, `agama_dpt`, `rwid`, `rtid`, `created_at`, `updated_at`) VALUES
+(3, NULL, '300013030300', 'Maemunah', 'dpt_maemunah', '$2y$10$2QOMYCaIIolGzK2KAyq6POhxN1KVrT8bEVLIfehpSQ4CQvA2/5aui', 'Jln.Cilengkrang 01', 'perempuan', 'Islam', 1, 4, '2019-05-24 21:08:52', '2019-05-24 21:08:52');
 
 -- --------------------------------------------------------
 
@@ -151,7 +146,7 @@ CREATE TABLE `paslonrts` (
 --
 
 INSERT INTO `paslonrts` (`id`, `no_paslon`, `nm_rt`, `rt_id`, `pekerjaan`, `agama`, `umur`, `gambar`, `alamat`, `created_at`, `updated_at`) VALUES
-(2, '01', 'Nurhadi Ahmad Yohan', 1, 'Swasta', 'Islam', '35', 'avatar/XYc0Zf0d0FOXSnnjMLGqWwWI4tccOCql1HbLba3o.jpeg', 'jln. pasir impun no 35', '2019-05-20 20:29:10', '2019-05-20 20:29:10');
+(3, '01', 'Nurhadi Ahmad Yohan', 4, 'Swasta', 'Islam', '35', 'avatar/JqMW0hVszm6K2Be3hQHLu1LhkiJVLyBNQxBhG5F1.jpeg', 'jln. pasir impun no 36', '2019-05-24 22:38:49', '2019-05-24 22:38:49');
 
 -- --------------------------------------------------------
 
@@ -286,7 +281,7 @@ ALTER TABLE `data_rws`
 -- AUTO_INCREMENT untuk tabel `dpts`
 --
 ALTER TABLE `dpts`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT untuk tabel `migrations`
@@ -298,7 +293,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT untuk tabel `paslonrts`
 --
 ALTER TABLE `paslonrts`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT untuk tabel `paslon_rws`

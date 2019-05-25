@@ -40,6 +40,8 @@
 
             <th>NIK</th>
             <th>Nama</th>
+            <th>Usename</th>
+            <th>Password</th>
             <th>Jenis Kelamin</th>
             <th>Alamat</th>
             <th>Agama</th>
@@ -53,11 +55,16 @@
           <tr>
             <td>{{$dpt->nik}}</td>
               <td>{{$dpt->nama_dpt}}</td>
+                <td>{{$dpt->username}}</td>
+                  <td>{{$dpt->password}}</td>
                 <td>{{$dpt->jns_kelamin}}</td>
                   <td>{{$dpt->alamat_dpt}}</td>
                     <td>{{$dpt->agama_dpt}}</td>
                       <td>{{$dpt->rt}}</td>
                         <td>{{$dpt->datarw}}</td>
+                              <td><a style="background:darkred;" href="/delete/{{$dpt->id}}/rt" class="btn btn-danger">delete</a>
+                                <a href="/admin/{{$dpt->id}}/editdpt" class="btn btn-info">edit</a>
+                            </td>
 
           </tr>
           @endforeach
@@ -87,6 +94,16 @@
       <div class="form-group col-md-6">
         <label for="inputCity">Nama </label>
         <input type="text" name="nama_dpt" class="form-control" id="inputCity">
+      </div>
+      </div>
+      <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="inputEmail4">Username</label>
+        <input  type="text" name="username" class="form-control" id="inputEmail4" >
+      </div>
+      <div class="form-group col-md-6">
+        <label for="inputCity">Password</label>
+        <input type="password" name="password" class="form-control" id="inputCity">
       </div>
       </div>
       <div class="form-row">

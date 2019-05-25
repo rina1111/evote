@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use App\data_rt;
 use App\data_rw;
@@ -163,6 +163,8 @@ public function delete_rw($id)
       $dpt=new dpt();
       $dpt->nik=$request->get('nik');
       $dpt->nama_dpt=$request->get('nama_dpt');
+      $dpt->username=$request->get('username');
+      $dpt->password = Hash::make($request->get('password'));
       $dpt->alamat_dpt=$request->get('alamat_dpt');
       $dpt->jns_kelamin=$request->get('jns_kelamin');
       $dpt->agama_dpt=$request->get('agama_dpt');
@@ -174,4 +176,31 @@ public function delete_rw($id)
           return redirect ('admin/dpt')->with('success');
       }
     }
+
+    public function delete_dpt($id)
+    {
+      $dpt=DB::table('dpts')
+        ->where('dpts.id',$id)->delete();
+        return redirect ('admin/dpt');
+    }
+
+
+
+    public function editdpt($id)
+    {
+      $datadpt=dpt::find($id);
+      $dpt=dpt::all();
+      $datart=data_rt::all();
+      $datarw=data_rw::all();
+
+      return view('admin/edit_dpt',['datadpt'=>$datadpt,'dpt'=>$dpt, 'datarw'=>$datarw, 'datart'=>$datart]);
+    }
+    public function update_dpt(Request $request,$id)
+    {
+      $datadpt= dpt::find($id);
+      $datadpt->update($request->all());
+      return redirect('admin/dpt')->with('success','Data telah terupdate');
+    }
+
+
 }
